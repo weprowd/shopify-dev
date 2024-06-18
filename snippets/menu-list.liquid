@@ -1,0 +1,21 @@
+<ul itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+	{% for link in linklists[menu].links %}
+		<li class="{% if link.active %}active{% endif %} {% if link.child_active %}child-active{% endif %} {%- if link.links != blank -%}haslinks{% endif %} page-{{ link.handle }}"><a itemprop="url" href="{{ link.url }}"><span itemprop="name">{{ link.title }}</span></a>
+			{%- if link.links != blank -%}
+			  <ul class="child">
+				{% for child_link in link.links %}  
+				<li {% if child_link.active %}class="active"{% endif %}><a itemprop="url" href= "{{ child_link.url }}"><span itemprop="name">{{ child_link.title }}</span></a>
+				{%- if child_link.links != blank -%}
+				  <ul class="grandchild">
+				  {% for grandchild_link in child_link.links %}  
+					<li {% if link.active %}class="active"{% endif %}><a itemprop="url" href= "{{ grandchild_link.url }}"><span itemprop="name">{{ grandchild_link.title }}</span></a></li>
+				  {% endfor %}
+				  </ul>
+				{%- endif -%}   
+				</li>
+				{% endfor %}
+			  </ul> 
+			{%- endif -%} 
+		</li>
+	{% endfor %}
+</ul>

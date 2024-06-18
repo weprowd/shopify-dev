@@ -1,0 +1,44 @@
+{% include 'section-feat-cats', blocks:section.blocks%}
+
+{% schema %}
+{
+  "name": "Featured Cats",
+  "class": "featured-cats-block",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "blocks",
+      "name": "Blocks",
+      "settings": [
+        {
+		  "type": "image_picker",
+		  "id": "image",
+		  "label": "Featured Image"
+		},
+        {
+		  "type": "text",
+		  "id": "heading",
+		  "label": "Heading"
+		},
+        {
+		  "type": "text",
+		  "id": "link",
+		  "label": "Link"
+		},
+        {
+		  "type": "color",
+		  "id": "color",
+		  "label": "Color"
+		}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Categories",
+      "category": "Image / Content"
+    }
+  ]
+}
+{% endschema %}

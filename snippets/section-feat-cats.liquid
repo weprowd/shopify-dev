@@ -1,0 +1,43 @@
+<section class="feat-collections section-bg" style="background-color:#9b0c5c;">
+
+	{% include 'svg-wave' %}
+
+	<div class="collection-slider">
+
+		{% for block in blocks %}
+			<a href="{{ block.settings.link }}" class="col-slide" data-text="{{ block.settings.heading }}" data-color="{{ block.settings.color }}">
+				<div class="col-slide__image">
+					<img data-flickity-lazyload="{{ block.settings.image | img_url: 'master' }}" alt="Suckerpunch Gourmet - {{ block.settings.heading }}">
+					<div class="col-slide__image__background"></div>
+				</div>
+				<div class="floater floater--1" data-parallax='{"x" : -50, "y": 100, "rotateZ": -75}'>
+					<img data-src-delay="3000" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_96_2x_4d61a8bd-f030-4f3a-a442-3daa305fe0ee.png?v=1612570806" alt="Suckerpunch Gourment Pickle Chip">
+				</div>
+				<div class="floater floater--2" data-parallax='{"x" : 50, "y": 100, "rotateZ": -75}'>
+					<img data-src-delay="3000" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_97_2x_7904d269-a526-49f7-94cb-c2c4407762e0.png?v=1612570806" alt="Suckerpunch Gourment Pickle Chip">
+				</div>
+			</a>
+		{% endfor %}
+
+	</div>
+	
+	
+	<ul class="collection-slider__nav">
+		<li><button class="flick-nav prev reset">{% include 'svg-long-arrow' %}</button></li>
+		<li><button class="flick-nav next reset">{% include 'svg-long-arrow' %}</button></li>
+	</ul>
+	
+	<div class="feat-collections__marquees">
+		<div class="marquee">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	
+	<div class="collection-slider__count">
+		<span class="count"></span> Our Products
+	</div>
+	
+</section>

@@ -1,0 +1,96 @@
+<section class="testimonials section-bg">
+
+	{% include 'svg-wave', type: 'mirror' %}
+	
+	<div class="container">
+		
+		
+		<div class="testimonials__mascot">
+			<img data-src-delay="3000" data-src="{{ 'suckerpunch_mascot.png' | asset_url }}" alt="Suckerpunch Gourmet">
+		</div>
+		
+		<div class="slider-container">
+		
+			<div class="floater floater--1">
+				<img data-parallax='{"x" : -20, "y": -50}' data-src-delay="300" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_96_2x_4d61a8bd-f030-4f3a-a442-3daa305fe0ee.png?v=1611859216" alt="Suckerpunch Gourmet Pickles">
+			</div>
+			<div class="floater floater--2">
+				<img data-parallax='{"x" : 75}' data-src-delay="300" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_97_2x_7904d269-a526-49f7-94cb-c2c4407762e0.png?v=1611859216" alt="Suckerpunch Gourmet Pickles">
+			</div>
+		
+			<div class="quote quote--open">
+				{% include 'svg-quote' %}
+			</div>
+			
+			<div class="badge badge--spin badge--testimonials">
+				<img data-src-delay="3000" data-src="{{ 'badge-testimonials.png' | asset_img_url: '350x' }}" alt="Suckerpunch Gourmet Testimonials">
+			</div>
+		
+			<div class="testimonials-slider">
+				{% for i in (1..5) %}
+
+					{% assign testimonial = 'testimonial_' | append: i %}
+
+					{% if settings[testimonial] and settings[testimonial] != '' %}
+
+						<div class="testimonial">
+							<blockquote>
+								{{ settings[testimonial] }}
+							</blockquote>
+						</div>
+
+					{% endif %}
+
+				{% endfor %}
+			</div>
+
+			<div class="testimonials__meta">
+			
+				<div class="author-slider">
+					{% for i in (1..5) %}
+
+						{% assign testimonial = 'testimonial_' | append: i %}
+						{% assign author = 'author_' | append: i %}
+						{% assign image = 'picture_' | append: i %}
+
+						{% if settings[testimonial] and settings[testimonial] != '' %}
+
+							<div class="author">
+
+								{% if settings[image] %}
+									<div class="author__image">
+										<div class="spacer">
+											<div class="positioner">
+												<img data-src-delay="5000" data-src="{{ settings[image] | img_url: '100x' }}" alt="{{ settings[author] }}">
+											</div>
+										</div>
+									</div>
+								{% endif %}
+
+								<span class="author__name">
+									{{ settings[author] }}
+								</span>
+
+							</div>
+
+						{% endif %}
+
+					{% endfor %}
+				</div>
+				
+				<div class="quote quote--open">
+					{% include 'svg-quote' %}
+				</div>
+				
+				<ul>
+					<li><button class="reset flick-nav prev">{% include 'svg-long-arrow' %}</button></li>
+					<li><button class="reset flick-nav next">{% include 'svg-long-arrow' %}</button></li>
+				</ul>
+				
+			</div>
+			
+		</div>
+		
+		
+	</div>
+</section>

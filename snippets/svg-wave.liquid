@@ -1,0 +1,14 @@
+<div class="svg-icon svg-icon--wave">
+	<div class="positioner">
+		{% unless type %}
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.701 59.01"><path d="M410.7 3.326S343.052-12.395 240.3 24.51 0 58.977 0 58.977h410.7z" fill="#9e1260"/></svg>
+		{% endunless %}
+		{% if type == 'mirror' %}
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.7 59.011"><path d="M0 3.327s67.648-15.721 170.4 21.184 240.3 34.467 240.3 34.467H0z" fill="#9e1260"/></svg>
+		{% elsif type == 'down' %}
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.7 59.011"><path d="M410.7 55.684s-67.648 15.717-170.4-21.183S0 .033 0 .033h410.7z" fill="#9e1260"/></svg>
+		{% elsif type == 'down mirrow' %}
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.7 59.011"><path d="M0 55.684s67.648 15.717 170.4-21.183S410.7.033 410.7.033H0z" fill="#9e1260"/></svg>
+		{% endif %}
+	</div>
+</div>

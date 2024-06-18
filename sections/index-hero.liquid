@@ -1,0 +1,74 @@
+<section class="h-hero section-bg">
+
+	<div class="padding-wrap">
+		<h1>{{ section.settings.heading }}</h1>
+	</div>
+		
+	<div class="h-hero__cards">
+
+		{% for block in section.blocks %}
+		
+			{% assign class = '' %}
+			
+			{% if forloop.index == 1 %}
+				{% assign class = 'move-left' %}
+			{% elsif forloop.index == 3 %}
+				{% assign class = 'move-right' %}
+			{% endif %}
+		
+			<div class="h-hero__card {{ class }}" >
+				<div class="spacer">
+					<div class="positioner">
+						<img src="{{ block.settings.image | img_url: 'master' }}" alt="Suckerpunch Gourmet">
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+	
+	<div class="floaters">
+		<div class="floater floater--1" data-parallax='{"x" : -75, "y": 150, "rotateZ": -50}'>
+			<img src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_17_2x_b6e73082-3003-4e0f-b138-3ea956589c24.png?v=1612569827" alt="">
+		</div>
+
+		<div class="floater floater--2" data-parallax='{"x" : 75, "y": 150, "rotateZ": -50}'>
+			<img src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_23_2x_735dda18-39f9-43dd-ae0c-2f7c29a37403.png?v=1612569827" alt="">
+		</div>
+	</div>
+		
+</section>
+
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "class": "featured-products-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blocks",
+      "name": "Blocks",
+      "settings": [
+        {
+		  "type": "image_picker",
+		  "id": "image",
+		  "label": "Image"
+		}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage Hero",
+      "category": "Image / Content"
+    }
+  ]
+}
+{% endschema %}

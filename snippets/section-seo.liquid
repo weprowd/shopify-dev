@@ -1,0 +1,33 @@
+<section class="seo-content">
+	<div class="container">
+		
+		<div class="seo-content__intro">
+			<div class="sticky-image sticky-image--1" data-parallax='{"y": 200}'>
+				<div class="spacer image-reveal image-reveak--" data-aos="animate-this">
+					<div class="positioner">
+						<img data-src-delay="3000" data-src="{{ settings.image_1 | img_url: 'master' }}" alt="">
+					</div>
+				</div>
+				<img class="floater" data-parallax='{"x" : 25, "y": 100, "rotateZ": -10}' data-src-delay="3000" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_81_2x_f74e8fa1-15d2-4b6f-80fa-74a39c68064a.png?v=1611986932" alt="">
+			</div>
+			<div class="content-wrap">
+				<span class="preheading preheading--body">{{ settings.preheading }}</span>
+				<h2 class="h1">{{ settings.heading }}</h2>
+			</div>
+		</div>
+		
+		<div class="seo-content__content">
+			{{ settings.content }}
+		</div>
+		
+		<div class="sticky-image sticky-image--2" data-parallax='{"y": -200}'>
+			<div class="spacer image-reveal image-reveak--" data-aos="animate-this">
+				<div class="positioner">
+					<img data-src-delay="3000" data-src="{{ settings.image_2 | img_url: 'master' }}" alt="">
+				</div>
+			</div>
+			<img class="floater" data-parallax='{"x" : -25, "y": 100, "rotateZ": 10}' data-src-delay="3000" data-src="https://cdn.shopify.com/s/files/1/0250/3395/files/Mask_Group_78_2x_62251793-0ab7-4ffc-853f-acc1913beb1c.png?v=1611986938" alt="">
+		</div>
+		
+	</div>
+</section>

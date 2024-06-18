@@ -1,0 +1,17 @@
+development:
+  store: suckerpunch-gourmet.myshopify.com
+  password: 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
+  theme_id: "84076855401"
+  bucket_size: 40
+  refill_rate: 2
+  ignore_files: 
+    - "*.swp"
+    - "*~"
+    - "assets/theme.css"
+    - "config/settings_data.json"
+    - "node_modules"
+    - "*.DS_Store"
+    - "*Thumbs.db"
+    - "*.sass-cache*"
+    - "*~imageoptim*"
+    - "_source"

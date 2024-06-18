@@ -1,0 +1,48 @@
+{% if product != empty and product != '' %}
+   
+    {% assign pheading = '' %}
+    
+    {% if heading and heading != '' %}
+		{% assign pheading = heading %}
+    {% else %}
+		{% assign pheading = product.title %}
+    {% endif %}
+
+    <article class="product-card" data-aos="animate-this" data-type="{{ product.type }}" {% include 'product-highlight-color' %}>
+        <div class="product-card__wrap">
+            
+            {% if product.tags contains 'Badge - Best Sellers' %}
+            	<div class="badge badge--spin badge--best-sellers" >
+            		<img data-src-delay="3000" data-src="{{ 'badge-best-sellers.png' | asset_img_url: '100x' }}" alt="Suckerpuch Gourmet - Best Sellers">
+            	</div>
+            {% endif %}
+
+            <a class="product-card__thumb" href="{{ product.url }}">
+            	<div class="product-card__background">
+            			{% include 'svg-wave' %}
+            	</div>
+				<img data-flickity-lazyload="{{ product.featured_image | img_url:'x500' }}" alt="{{ product.title }}">
+            </a>
+
+            <div class="product-card__content">
+
+                <div class="product-card__meta">
+                	<div class="product-card__titles">
+						<span class="vendor">Suckerpunch Gourmet</span>
+						<h3><a href="{{ product.url }}">{{ pheading }}</a></h3>
+                	</div>
+                	<span class="product-price">{{ product.price | money }}</span>
+                </div>
+
+                <div class="product-card__bottom">
+                	<button class="atc-btn" data-id="{{ product.selected_or_first_available.variant.id }}">Add to Cart</button>
+                	<a class="link-arrow" aria-label="Shop product {{ product.title }}" href="{{ product.url }}">View Product</a>
+                </div>   
+
+            </div>
+
+        </div>
+    </article>
+    
+{% endif %}
+

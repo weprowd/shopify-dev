@@ -1,0 +1,30 @@
+{% form 'customer', id: formId, novalidate: 'novalidate' %}
+
+	{%- if form.posted_successfully? -%}
+		<p class="form-message form-message--success">Thank you for subscribing to our newsletter!</p>
+	{%- else -%}
+	
+		<input type="hidden" name="contact[tags]" value="newsletter">
+	
+		{% if form.errors %}
+		  
+			<div class="hide">{{ form.errors | default_errors }}</div>
+			  
+			{% for error in form.errors %}
+				<p class="form-message form-message--error hide">{{ error }}</p>
+			{% endfor %}
+		{% endif %}
+		
+		{% if form.errors contains 'email' %}
+			<p class="form-message form-message--error">Please enter a valid email address</p>
+		{% endif %}
+		
+		<div class="input-group">
+			<label for="{{ formId }}-email">Email</label>
+			<input type="email" name="contact[email]" required id="{{ formId }}-email" class="{% if form.errors %} nput--error{% endif %}" value="{{ form.email }}" placeholder="Enter your email address">
+		</div>
+		<button class="reset" type="submit" value="Sign Up">{% include 'svg-long-arrow' %}</button>
+		
+	{%- endif -%}
+	
+{% endform %}

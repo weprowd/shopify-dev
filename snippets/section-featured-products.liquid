@@ -1,0 +1,19 @@
+<section class="feat-products">
+    <div class="container">
+        
+        {% if sheading and sheading != '' %}
+            <h2 class="hdisplay" data-parallax='{"x" : -200}'>{{ sheading }}</h2>
+        {% endif %}
+        
+        <div class="feat-products__grid">
+            
+            {% for block in blocks %}
+            
+                {% include 'product-card', product:all_products[block.settings.product], heading:block.settings.heading delay:3000 %}
+            
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+</section>

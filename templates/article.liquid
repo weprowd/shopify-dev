@@ -1,0 +1,14 @@
+<section class="article-intro">
+	<div class="container">
+		<h1 class="title">{{ article.title }}</h1>
+		<div class="meta">
+			<span class="author">by {{ article.author }}</span>
+			<span class="date">Posted on {{ article.created_at | date: "%B %d, '%y" }}</span>
+		</div>
+	</div>
+</section>
+<section class="content-block article-content">
+	<div class="container">
+		{{ article.content }}
+	</div>
+</section>

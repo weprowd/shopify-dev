@@ -1,0 +1,38 @@
+<section class="blog-hero">
+	<div class="container">
+		<h1>{{page.title}}</h1>
+	</div>
+</section>
+
+<section class="blog-latest-posts">
+	<div class="container">
+	
+		{% paginate blog.articles by 10 %}
+
+			{% for article in blog.articles  %}
+				
+				<article class="blog-card">
+
+					<h3 class="title"><a href="{{article.url}}">{{ article.title }}</a></h3>
+
+					<div class="meta">
+						<span class="author">by {{ article.author }}</span>
+						<span class="date">Posted on {{ article.created_at | date: "%B %d, '%y" }}</span>
+					</div>
+
+					<div class="article-body">
+						{{ article.content }}
+					</div>
+					
+				</article>
+
+			{% endfor %}
+
+			<div id="pagination">
+				{{ paginate | default_pagination }}
+			</div>
+
+		{% endpaginate %}
+		
+	</div>
+</section>

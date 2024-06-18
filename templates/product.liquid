@@ -1,0 +1,45 @@
+<section id="product-details" class="product-intro">
+    <div class="container">
+    
+		<div class="product-intro__images">
+			{% for image in product.images %}
+				{% if forloop.first %}
+
+					<div id="first-image" class="product-image">
+						<img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+					</div>
+
+				{% else %}
+
+					<div class="product-image">
+						<img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+					</div>
+
+				{% endif %}
+			{% endfor %}
+		</div>
+    
+    	<div class="product-intro__content">
+			<h1>{{ product.title }}</h1>
+			<p>{{ product.description }}</p>
+
+			{% if product.available %}
+				<form action="/cart/add" method="post">
+					<div id="product-variants">
+						<select id="product-select" name='id'>
+							{% for variant in product.variants %}
+								<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+							{% endfor %}
+						</select>
+					</div><!-- product-variants -->
+					<input type="submit" value="Add to cart" id="addtocart" />
+				</form>
+			{% else %}
+				<p>Sorry, the product is not available</p>
+			{% endif %}
+    	</div>
+   
+    </div>
+</section>
+
+

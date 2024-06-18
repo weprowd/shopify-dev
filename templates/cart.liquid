@@ -1,0 +1,123 @@
+<section class="my-cart">
+	<div class="container">
+	
+		<div class="my-cart__intro">
+			<h1>My Bag</h1>
+			<a href="/collections/all" class="btn btn--pink continue-shopping">Continue Shopping</a>
+		</div>
+	
+		{% if cart.item_count == 0 %}
+			<p>Your cart is currently empty. <a href="/collections/all">Shop Now</a></p>
+		{% else %}
+		
+			<form class="the-cart" action="/cart" method="post" novalidate>
+		
+				<table id="cart-items">
+					<thead>
+						<tr>
+							<td class="tc-product">Product</td>
+							<td class="tc-description">Description</td>
+							<td class="tc-price">Price</td>
+							<td class="tc-units">Quantity</td>
+							<td class="tc-total">Total</td>
+							<td class="tc-action">Action</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in cart.items %}
+							<tr>
+
+								<td class="tc-product">
+									<a href="{{ item.url }}" class="cart-item__image">
+										<img src="{{ item.product.images.first | product_img_url: '160x160' | crop:'center' }}" alt="{{ item.title | escape }}" />
+									</a>
+								</td>
+
+								<td class="tc-description">
+									<div class="cart-item__description">
+										<span class="heading5"><a href="{{ item.url }}">{{ item.product.title }}</a></span>
+										{% unless item.variant.title contains "Default" %}
+											<ul>
+												{% for option in item.variant.options %}
+													<li class="extra-opt">{{ item.product.options[forloop.index0] }}: {{ option }}</li> 
+												{% endfor %}
+											</ul> 
+										{% endunless %}
+										<span class="barcode">Product Code: {{ item.sku }}</span>
+									</div>
+								</td>
+
+								<td class="tc-price"><span class="cart-item__price">{{ item.price | money }}</span></td>
+
+								<td class="tc-units">
+									<div class="cart-item__quantity">
+										<label for="updates_{{ item.id }}">Quantity:</label>
+										<input id="updates_{{ item.id }}" name="updates[]" class="item__quantity qty-input" type="number" value="{{ item.quantity }}">
+									</div>
+								</td>
+
+								<td class="tc-total">
+									<span class="cart-item__price cart-item__price--total">{{ item.price | times: item.quantity | money }}</span>
+								</td>
+
+								<td class="tc-action">
+									<div class="cart-item__remove">
+										<a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">{% include 'svg-close' %} <span>Remove This Item</span></a>
+									</div>
+								</td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<div class="cart__footer">
+
+					<div class="cart__extras">
+						<div class="discount-code">
+							<span class="subheading">Discount Code</span>
+							<p class="apply-code">Apply Discount code at Checkout</p>
+						</div>
+						<div class="order-notes">
+							<label for="CartSpecialInstructions" class="subheading">Add Order Note</label>
+							<textarea name="note" id="CartSpecialInstructions"></textarea>
+						</div>
+					</div>
+
+					<div class="cart__totals">
+						<table>
+							<tbody>
+								<tr>
+									<td>Total</td>
+									<td class="cart__totals__total">{{ cart.total_price | money }}</td>
+								</tr>
+								<tr>
+									<td>Estimated Shipping Costs</td>
+									<td>Calculated at Checkout</td>
+								</tr>
+								<tr>
+									<td>Estimated Taxes</td>
+									<td>Calculated at Checkout</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="checkout__buttons">
+							<button id="cart_update" name="update" value="Update Cart" style="display:none;">Update Cart</button>
+							<input type="submit" name="checkout" class="btn btn--thicc btn--orange checkout" value="Checkout">
+							<div class="additional-checkout" style="display:none;">
+                                {% if additional_checkout_buttons %}
+                                    <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+
+				</div>
+			
+			</form>
+		
+		{% endif %}
+		
+	</div>
+</section>
+
